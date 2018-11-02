@@ -1,0 +1,15 @@
+<div>
+    <h1>
+        Add a Note
+    </h1>
+    <input ng-model="newTask.title" ng-keyup="addTask($event)" type="text" class="textBox" placeholder="enter task title">
+    <ul class="task-list">
+        <li ng-repeat="task in tasks" class="task" ui-sref="home.task({taskId: task.id})">
+            <input ng-click="task.status = !task.status" type="checkbox" ng-model="task.status">
+            <div type="text" data-ng-click="task.editable = true" contenteditable="{{task.editable}}" ng-class="{'done' : task.status}">
+                {{task.title}}
+            </div>
+            <i ng-click="deleteTask(task)" ng-if="task.status" class="fa fa-trash trash-icon"></i>
+        </li>
+    </ul>
+</div>
